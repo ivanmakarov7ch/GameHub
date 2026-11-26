@@ -117,3 +117,75 @@
   margin-bottom: 24px;
   color: var(--color-text-muted);
 }
+
+/* Game Cards */
+
+.game-card {
+  height: 100%;
+}
+
+.game-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background-color: var(--color-surface-light);
+}
+
+.game-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.game-rating {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.game-card-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Search Bar */
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.game-card-placeholder {
+  display: grid;
+  aspect-ratio: 16 / 9;
+  place-items: center;
+  background: linear-gradient(135deg, #292044, #17171d);
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+}

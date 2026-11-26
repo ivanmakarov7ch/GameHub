@@ -1,0 +1,47 @@
+/* ========================================
+   GameHub - Home Page
+======================================== */
+
+.home-hero {
+  padding-block: 80px;
+  text-align: center;
+}
+
+.home-hero h1 {
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+}
+
+.home-hero p {
+  max-width: 650px;
+  margin: 0 auto 28px;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.featured-section {
+  padding-block: 40px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .game-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero {
+    padding-block: 48px;
+  }
+}
