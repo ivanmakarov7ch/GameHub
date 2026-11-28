@@ -16,4 +16,7 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    allowedHosts: ['gamehub-pddv.onrender.com'],
+  },
 });

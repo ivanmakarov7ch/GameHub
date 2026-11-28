@@ -62,8 +62,7 @@ async function loadGameDetails() {
   } catch (error) {
     console.error('Unable to load game details:', error);
 
-    gameDetails.innerHTML =
-      '<p>Unable to load game details. Please try again later.</p>';
+    gameDetails.innerHTML = '<p>Unable to load game details. Please try again later.</p>';
   }
 }
 

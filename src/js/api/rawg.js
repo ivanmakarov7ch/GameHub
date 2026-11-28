@@ -93,9 +93,7 @@ export async function getGameDetails(id) {
     key: apiKey,
   });
 
-  const response = await fetch(
-    `${RAWG_API_URL}/games/${id}?${params.toString()}`,
-  );
+  const response = await fetch(`${RAWG_API_URL}/games/${id}?${params.toString()}`);
 
   if (!response.ok) {
     throw new Error(`RAWG API error: ${response.status}`);
