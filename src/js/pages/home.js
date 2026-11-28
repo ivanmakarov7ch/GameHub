@@ -3,42 +3,13 @@ import '../../css/layout.css';
 import '../../css/components.css';
 import '../../css/responsive.css';
 import '../../css/pages/home.css';
-import { renderGameCard } from '../components/GameCard.js';
 
+import { renderGameCard } from '../components/GameCard.js';
 import { renderHeader } from '../components/Header.js';
 import { renderFooter } from '../components/Footer.js';
+import { getPopularGames } from '../api/rawg.js';
 
 const app = document.querySelector('#app');
-const sampleGames = [
-  {
-    id: 1,
-    title: 'Elden Ring',
-    rating: null,
-    released: null,
-    genres: ['RPG', 'Action'],
-  },
-  {
-    id: 2,
-    title: 'Hollow Knight',
-    rating: null,
-    released: null,
-    genres: ['Metroidvania', 'Adventure'],
-  },
-  {
-    id: 3,
-    title: 'Stardew Valley',
-    rating: null,
-    released: null,
-    genres: ['Simulation', 'RPG'],
-  },
-  {
-    id: 4,
-    title: 'Hades',
-    rating: null,
-    released: null,
-    genres: ['Roguelike', 'Action'],
-  },
-];
 
 app.innerHTML = `
   ${renderHeader('home')}
@@ -66,11 +37,33 @@ app.innerHTML = `
         </p>
 
         <div class="game-grid" id="featured-games">
-          ${sampleGames.map((game) => renderGameCard(game)).join('')}
+          <p>Loading games...</p>
         </div>
       </section>
     </div>
   </main>
 
+
   ${renderFooter()}
 `;
+
+async function loadFeaturedGames() {
+  const featuredGames = document.querySelector('#featured-games');
+
+  try {
+    const games = await getPopularGames(8);
+
+    if (games.length === 0) {
+      featuredGames.innerHTML = '<p>No games found.</p>';
+      return;
+    }
+
+    featuredGames.innerHTML = games.map((game) => renderGameCard(game)).join('');
+  } catch (error) {
+    console.error('Unable to load featured games:', error);
+
+    featuredGames.innerHTML = '<p>We could not load games right now. Please try again later.</p>';
+  }
+}
+
+loadFeaturedGames();
